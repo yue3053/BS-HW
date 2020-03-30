@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table id="table">
+        <thead>
+            <tr>
+                <td>國家</td>
+                <td>確診</td>
+                <td>死亡</td>
+                <td>治癒</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>台灣</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>中國</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>美國</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+
+        var x = ['Taiwan', '台灣', 306, 5, 39];
+        var y = ['China', '中國', 82149, 3308, 75898];
+        var z = ['America', '美國', 142895, 2436, 2660];
+
+        var Earth = [x, y, z];
+         
+        var total = document.getElementById("table");
+        for(var i = 0 ; i < Earth.length ; i++ ){
+            total.insertRow(-1);
+
+            for(var j = 2 ; j < Earth[i].length ; j++ ){
+                total.rows[i+1].insertCell(j-1);
+                total.rows[i+1].cells[j-1].innerText = Earth[i][j];
+
+            }
+        }
+
+    </script>
+   
+</body>
+</html>
