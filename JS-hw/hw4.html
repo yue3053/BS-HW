@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+   
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>iphone</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: nono;
+            
+        }
+        .phonecolour{
+            font-size: 20px;
+            width:500px;
+            height: 50px;
+            margin: 20px;
+            text-align: center;
+        }
+        .internalvolume{
+            font-size: 20px;
+            width:500px;
+            height: 50px;
+            margin: 20px;
+            text-align: center;
+
+        }
+        .price{
+            font-size: 20px;
+            width:500px;
+            height: 50px;
+            margin: 20px;
+            margin-left: 30px;
+        }         
+    </style>
+
+  </head>
+  <body>
+    <div id="pic">
+        <img src="ipone/00iPhone11.jpg" alt="">
+    </div>
+
+    <div class="phonecolour">
+        <input type="button" value="紅色" onclick="Red()">
+        <input type="button" value="黑色" onclick="Black()">
+        <input type="button" value="白色" onclick=" White()">
+        <input type="button" value="黃色" onclick="Yellow()">
+        <input type="button" value="綠色" onclick="Green()">
+        <input type="button" value="紫色" onclick="Purple()">
+    </div>
+
+
+    <div class="internalvolume">
+        <input type="button" value="64G" onclick="iphone11_64()">
+        <input type="button" value="128G" onclick="iphone11_128()">
+        <input type="button" value="256G" onclick="iphone11_256()">
+                
+    </div>
+
+    <div id="price">
+        <h1>$0</h1>
+    </div>
+
+
+    <script>
+        cache_r = ""
+        function Red() {
+
+            cache_r = "<img src='https://bs2020-01.azurewebsites.net/Fake-Apple/img/iphone-red.png'>";
+            document.getElementById("pic").innerHTML = cache_r;
+        }
+        cache_b = ""
+        function Black() {
+
+            cache_b = "<img src='https://images.app.goo.gl/pdZ73MHeHSBQMSH87'>";
+            document.getElementById("pic").innerHTML = cache_b;
+        }
+        cache_w = ""
+        function White() {
+
+            cache_w = "<img src='https://hsulei.azurewebsites.net/Apple/apple-pic/iphone11-white-select-2019.png'>";
+            document.getElementById("pic").innerHTML = cache_w;
+        }
+        cache_y = ""
+        function Yellow() {
+
+            cache_y = "<img src='https://bs2020-01.azurewebsites.net/Fake-Apple/img/iphone-yellow.png'>";
+            document.getElementById("pic").innerHTML = cache_y;
+        }
+        cache_g = ""
+        function Green() {
+
+            cache_g = "<img src='https://hsulei.azurewebsites.net/Apple/apple-pic/iphone11-green-select-2019.png'>";
+            document.getElementById("pic").innerHTML = cache_g;
+        }
+        cache_p = ""
+        function Purple() {
+
+            cache_p = "<img src='https://hsulei.azurewebsites.net/Apple/apple-pic/iphone11-purple-select-2019.png'>";
+            document.getElementById("pic").innerHTML = cache_p;
+        }
+
+        function iphone11_64() {
+            var h1= document.getElementsByTagName("h1")[0];
+            h1.innerHTML = "$24900";
+        }
+        function iphone11_128() {
+            var h1= document.getElementsByTagName("h1")[0];
+            h1.innerHTML = "$26900";
+        }
+        function iphone11_256() {
+            var h1= document.getElementsByTagName("h1")[0];
+            h1.innerHTML = "$30400";
+        }
+
+        
+   
+    
+
+   
+
+        
+
+    </script>
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>
