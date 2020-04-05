@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+   
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>JS-HW4-3</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: nono;
+            text-align: center;
+            
+        }       
+
+        .top input{
+            font-size: 20px;
+            width:410px;
+            height: 50px;
+            margin: 20px;
+
+        }
+
+        .text input{
+            width: 80px;
+            height: 50px;
+            margin: 10px;
+        }
+
+    </style>
+    
+
+  </head>
+  <body>
+      <h1>計算機</h1>
+    
+    <div>
+        <div class="top">
+            <input type="text" id="screenName" name="screenName" class="screen">
+        </div>
+    </div>
+
+    <div class="text">
+        <input type="button" id="7" onclick="get(this.id)" value="7" class="buttons">
+        <input type="button" id="8" onclick="get(this.id)" value="8" class="buttons">
+        <input type="button" id="9" onclick="get(this.id)" value="9" class="buttons">
+        <input type="button" id="C" onclick="clearNum()" value="C" class="buttons">
+        <br>
+
+        <input type="button" id="4" onclick="get(this.id)" value="4" class="buttons">
+        <input type="button" id="5" onclick="get(this.id)" value="5" class="buttons">
+        <input type="button" id="6" onclick="get(this.id)" value="6" class="buttons">
+        <input type="button" id="*" onclick="get(this.id)" value="*" class="buttons">
+        <br>
+
+        <input type="button" id="1" onclick="get(this.id)" value="1" class="buttons">
+        <input type="button" id="2" onclick="get(this.id)" value="2" class="buttons">
+        <input type="button" id="3" onclick="get(this.id)" value="3" class="buttons">
+        <input type="button" id="/" onclick="get(this.id)" value="/" class="buttons">
+        <br>
+
+        <input type="button" id="+" onclick="get(this.id)" value="+" class="buttons">
+        <input type="button" id="0" onclick="get(this.id)" value="0" class="buttons">
+        <input type="button" id="-" onclick="get(this.id)" value="-" class="buttons">
+        <input type="button" id="equal" onclick="equal()" value="=" class="buttons">
+
+
+
+
+    </div>
+
+    <script>
+        var num = 0; 
+        function get(num) {
+            
+            document.getElementById('screenName').value += document.getElementById(num).value;
+
+        }
+        function equal() {
+            
+            document.getElementById("screenName").value = eval(document.getElementById("screenName").value);
+            
+        }
+        function clearNum() {
+            
+            document.getElementById("screenName").value = null;
+           
+        }
+    </script>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>
