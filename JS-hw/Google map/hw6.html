@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+  <title>口罩地圖</title>
+
+  <style>
+    #map {
+      height: 100%;
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div id="map"></div>
+  <script>
+
+    function initMap() {
+      var locationchu = { lat: 24.756814, lng: 120.952884 };
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 13,
+        center: locationchu,
+        gestureHandling: 'cooperative'
+      });
+      var script = document.createElement('script');
+      script.src = 'https://developers.google.com/maps/documentation/javascript/examples/json/earthquake_GeoJSONP.js';
+      document.getElementsByTagName('head')[0].appendChild(script);
+
+      var marker = new google.maps.Marker({
+        position: locationchu,
+        map: map,
+        title: 'Hello World!'
+      });
+
+
+      var contentString = '<div id="content">' +
+        '<div id="siteNotice">' +
+        '</div>' +
+        '<h1 id="firstHeading" class="firstHeading">Chu</h1>' +
+        '</div>';
+
+      var infowindow = new google.maps.InfoWindow({
+        content: contentString
+      });
+
+      var marker = new google.maps.Marker({
+        position: locationchu,
+        map: map,
+        title: 'locationchu'
+      });
+      marker.addListener('click', function () {
+        infowindow.open(map, marker);
+      });
+
+      //圖標會動
+      /* var marker;
+         marker = new google.maps.Marker({
+           map: map,
+           draggable: true,
+           animation: google.maps.Animation.DROP,
+           position: { lat: 24.756814, lng: 120.952884 }
+         });
+         marker.addListener('click', toggleBounce);
+ 
+ 
+         function toggleBounce() {
+           if (marker.getAnimation() !== null) {
+             marker.setAnimation(null);
+           } else {
+             marker.setAnimation(google.maps.Animation.BOUNCE);
+           }
+         }
+ 
+         function drop() {
+           for (var i = 0; i < markerArray.length; i++) {
+             setTimeout(function () {
+               addMarkerMethod();
+             }, i * 200);
+           }
+         }*/
+
+
+      $.ajax({
+        type: "Get",
+        url: "https://findmasks.herokuapp.com/places",
+        success: function (response) {
+          let all = response;
+          let longitude = [];
+          let latitude = [];
+          for (var i = 0; i < all.features.length; i++) {
+            latitude[i] = all.features[i].geometry.coordinates[1];
+            longitude[i] = all.features[i].geometry.coordinates[0];
+
+            if (all.features[i].properties.masksLeft || all.features[i].properties.childMasksLeft == 0) {
+              markers = new google.maps.Marker({
+                position: { lat: latitude[i], lng: longitude[i] },
+                map: map,
+                icon: {
+                  url: "no.jpg",
+                  scaledSize: new google.maps.Size(30, 30)
+                }
+              });
+            }
+            else {
+              markers = new google.maps.Marker({
+                position: { lat: longitude[i], lng: latitude[i] },
+                map: map,
+                icon: {
+                  url: "yes.jpg",
+                  scaledSize: new google.maps.Size(30, 30)
+                }
+              });
+            }
+          }
+        }
+      });
+    }
+
+
+
+
+
+
+
+
+  </script>
+
+
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlKWP4uWjQIR3WDAWLAu6rUhBfc3_ppag&callback=initMap"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
