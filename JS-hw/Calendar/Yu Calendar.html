@@ -20,7 +20,7 @@
         }
 
         #mouths {
-            font-size: 22px;
+            font-size: 30px;
             color: #000000;
             font-weight: bold;
         }
@@ -111,6 +111,7 @@
             </div>
 
         </div>
+
         <div class="row mt-3">
             <div class="col">
                 <table class="table table-bordered text-center" id="dateZone">
@@ -125,10 +126,8 @@
                             <th>周六</th>
                         </tr>
                     </thead>
-
                     <tbody id="dateTable"></tbody>
                 </table>
-
             </div>
         </div>
 
@@ -190,7 +189,9 @@
                         </div>
                         <button type="button" class="btn btn-primary" id="datainput">確認</button>
                     </div>
-                    <div id="map"></div>                   
+
+                    <div id="map"></div>
+
                 </div>
             </div>
         </div>
@@ -241,6 +242,7 @@
                                         aria-describedby="helpId" placeholder="請在地圖上點選." disabled>
                                 </div>
                             </div>
+
                         </form>
                     </div>
 
@@ -499,7 +501,7 @@
                         color: document.getElementById("liusercolor").value,
                         address: document.getElementById("liaddress").value
                     };
-                    
+
                     var obj = JSON.stringify(scheduleItem);
                     localStorage.setItem(li.id, obj);
                     console.log("修改成功");
