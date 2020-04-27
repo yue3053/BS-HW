@@ -26,7 +26,7 @@
             /* background-color:#207a04; */
         }
         h1{
-            color: #fff;
+            color: rgb(243, 12, 139);
             padding: 30px 0px;
         }
         h1:hover{
@@ -34,7 +34,7 @@
         }
         h5{
             font-family:Microsoft JhengHei;
-            color: #fff;
+            color: rgb(15, 12, 233);
         }
         h5:hover{
            color:#FFA042 ;
@@ -84,15 +84,11 @@
                 Champions = JSON.parse(response);
                 let All_row = document.getElementById('all');
                 for(let i = 0 ;i<Champions.length;i++){
-                    // console.log(Champions);                   
                     let All_div = document.createElement('div');
                     All_div.classList.add('col-md-2','col-4');
                     _h5 = document.createElement('h5');
                     _h5.textContent= Champions[i].name;
                     All_div.appendChild(_h5);
-                    // let All_Title = document.getElementById('Name');
-                    // All_Title.textContent = Champions[i].name;
-                    // console.log(All_Title);
 
                     for (let item in Champions[i]){
                         if(item=='icon'){
@@ -103,8 +99,6 @@
                             function Show_card(){                             
                                 $('#exampleModalScrollable').modal('toggle');
                                 modal_body.textContent = '';
-                                // let _h5 = document.getElementById('exampleModalScrollableTitle');
-                                // _h5.textContent =Champions[i].name;
                                 for(let ele in Champions[i].stats){
                                     debugger;
                                     let _p = document.createElement('p');
