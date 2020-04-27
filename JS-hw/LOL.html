@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>LOL</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        body {
+            text-align: center;
+            background-color:#207a04;
+        }
+        h1{
+            color: #fff;
+            padding: 30px 0px;
+        }
+        h1:hover{
+            color:#FF5151;
+        }
+        h5{
+            font-family:Microsoft JhengHei;
+            color: #fff;
+        }
+        h5:hover{
+           color:#FFA042 ;
+        }
+        div{
+            margin-bottom: 20px;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>League </h1>
+
+    <div class="container">
+        <div class="row" id='all'>
+            
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title " id="exampleModalScrollableTitle" >Information</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        
+        let modal_body = document.getElementsByClassName('modal-body')[0];
+        $.ajax({
+            type: "Get",
+            url: "https://raw.githubusercontent.com/Lunichia/homeworkjs/master/LOL.json",
+            success: function (response) {
+
+                Champions = JSON.parse(response);
+                let All_row = document.getElementById('all');
+                for(let i = 0 ;i<Champions.length;i++){
+                    // console.log(Champions);                   
+                    let All_div = document.createElement('div');
+                    All_div.classList.add('col-md-2','col-4');
+                    _h5 = document.createElement('h5');
+                    _h5.textContent= Champions[i].name;
+                    All_div.appendChild(_h5);
+                    // let All_Title = document.getElementById('Name');
+                    // All_Title.textContent = Champions[i].name;
+                    // console.log(All_Title);
+
+                    for (let item in Champions[i]){
+                        if(item=='icon'){
+                            let _img = document.createElement('img');
+                            _img.src = (Champions[i]['icon']);
+                            All_div.appendChild(_img);
+                            _img.addEventListener('click',Show_card);
+                            function Show_card(){                             
+                                $('#exampleModalScrollable').modal('toggle');
+                                modal_body.textContent = '';
+                                // let _h5 = document.getElementById('exampleModalScrollableTitle');
+                                // _h5.textContent =Champions[i].name;
+                                for(let ele in Champions[i].stats){
+                                    debugger;
+                                    let _p = document.createElement('p');
+                                    _p.innerText = (`${ele}:${Champions[i].stats[ele]}`);
+                                    modal_body.appendChild(_p);
+                                }
+                            }
+
+                        }
+                    }
+                    All_row.appendChild(All_div);
+               
+                }
+
+            }
+        });
+
+    </script>
+
+
+
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
